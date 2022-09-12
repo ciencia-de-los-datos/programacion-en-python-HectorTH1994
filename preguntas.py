@@ -11,6 +11,27 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
+from filecmp import clear_cache
+from typing import Counter
+import itertools
+from operator import itemgetter
+
+clear_cache
+def lectura_archivo():
+    with open("data.csv", "r") as file:
+        datos_1 = file.readlines()
+    
+
+    #limpieza
+    datos_1 = [line.replace("\n", "") for line in datos_1]
+
+    #
+    # Conversión de los strings a listas
+    #
+    datos_1 = [line.split("\t") for line in datos_1]
+    
+
+    return datos_1
 
 
 def pregunta_01():
@@ -19,10 +40,15 @@ def pregunta_01():
 
     Rta/
     214
-
+    
     """
-    return
+    datos=lectura_archivo()
+    suma=0
+    respuesta=[int(z[1]) for z in datos]
+    suma=sum(respuesta)
+    return suma
 
+pregunta_01()
 
 def pregunta_02():
     """
@@ -39,7 +65,12 @@ def pregunta_02():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+    parejas = [(x[0]) for x in datos]
+    
+    conteo=Counter(parejas)
+    parejas2 = list(zip(list(conteo.keys()),list(conteo.values())))
+    return parejas2
 
 
 def pregunta_03():
@@ -57,7 +88,23 @@ def pregunta_03():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+    parejas = [(x[0],x[1]) for x in datos]
+    suma={}
+    for x in parejas:
+        print()
+        if x[0] in suma:
+            suma[x[0]]+=int(x[1])
+        else:
+            suma[x[0]]=int(x[1])
+    
+    resultado=[]
+
+    for key in sorted(suma.keys()):
+        resultado.append((key,suma[key]))
+    print(resultado)
+    return resultado
+
 
 
 def pregunta_04():
