@@ -67,11 +67,17 @@ def pregunta_02():
     """
     datos=lectura_archivo()
     parejas = [(x[0]) for x in datos]
-    
-    conteo=Counter(parejas)
-    parejas2 = list(zip(list(conteo.keys()),list(conteo.values())))
-    return parejas2
+    parejas2=[]
 
+    conteo=Counter(parejas)
+
+    for key in sorted(conteo.keys()):
+        parejas2.append((key,conteo[key]))
+
+     
+    print(parejas2)
+    return parejas2
+pregunta_02()
 
 def pregunta_03():
     """
