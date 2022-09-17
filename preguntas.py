@@ -11,8 +11,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-from filecmp import clear_cache
-from turtle import clear
+
 from typing import Counter, Final
 import itertools
 from operator import itemgetter
