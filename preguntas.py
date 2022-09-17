@@ -359,8 +359,21 @@ def pregunta_09():
     }
 
     """
-    return
+    datos=lectura_archivo()
+    datos=[x[4]  for x in datos]
+    datos=[x.split(",") for x in datos]
+    datos=[x for lista in datos for x in lista]
+    datos=sorted(datos)
+    datos=[x.split(":")[0] for x in datos]
+    suma=Counter(datos)
+    #Se creo un diccionario de conteo
+    #Se transforma ese diccionario a la forma solicitada
+    parejas2={}
+    for key in sorted(suma.keys()):
+        parejas2[key]=suma[key]
+    return parejas2
 
+pregunta_09()
 
 def pregunta_10():
     """
@@ -380,7 +393,11 @@ def pregunta_10():
 
 
     """
-    return
+    datos=lectura_archivo()
+    datos=[(x[0], len(x[3].split(',')), int(len(x[4].split(':')))-1)  for x in datos]
+    print(datos)
+    return datos
+
 
 
 def pregunta_11():
