@@ -180,13 +180,11 @@ def pregunta_05():
     final=[]
     for x in resultado.keys():
         final.append((x,
-                max(resultado[x].split(',')),
-                min(resultado[x].split(','))))
-  
-
+                int(max(resultado[x].split(','))),
+                int(min(resultado[x].split(',')))))
     return final
 
-
+print(pregunta_05())
 def pregunta_06():
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
