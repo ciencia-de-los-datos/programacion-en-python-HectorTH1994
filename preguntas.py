@@ -285,7 +285,7 @@ def pregunta_07():
 
     final=sorted(final)
     
-    return
+    return final
 
 
 
