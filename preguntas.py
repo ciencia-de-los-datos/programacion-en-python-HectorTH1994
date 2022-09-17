@@ -280,8 +280,14 @@ def pregunta_07():
 
     final=sorted(final)
     return final
+    
+pregunta_01()
+pregunta_02()
+pregunta_03()
+pregunta_04()
+pregunta_05()
+pregunta_06()
 pregunta_07()
-
 
 def pregunta_08():
     """
