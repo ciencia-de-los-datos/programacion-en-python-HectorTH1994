@@ -75,7 +75,6 @@ def pregunta_02():
         parejas2.append((key,conteo[key]))
 
      
-    print(parejas2)
     return parejas2
 pregunta_02()
 
@@ -98,7 +97,6 @@ def pregunta_03():
     parejas = [(x[0],x[1]) for x in datos]
     suma={}
     for x in parejas:
-        print()
         if x[0] in suma:
             suma[x[0]]+=int(x[1])
         else:
@@ -108,7 +106,6 @@ def pregunta_03():
 
     for key in sorted(suma.keys()):
         resultado.append((key,suma[key]))
-    print(resultado)
     return resultado
 
 
@@ -135,7 +132,18 @@ def pregunta_04():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+    #Selecionamos la fila
+    #Se selecciona la columna de las fechas [1]
+    #Se convierte en lista con split
+    #Se selecciona el dato corresponde a mes
+    meses = [x[2].split('-')[1] for x in datos]
+    suma=Counter(meses)
+    parejas2=[]
+    for key in sorted(suma.keys()):
+        parejas2.append((key,suma[key]))
+    
+    return parejas2
 
 
 def pregunta_05():
@@ -153,7 +161,30 @@ def pregunta_05():
     ]
 
     """
-    return
+        #Leemos el archivo
+    datos=lectura_archivo()
+
+    datos=[(x[0],x[1])  for x in datos]
+    
+    resultado={}
+    datos=sorted(datos)
+
+    # Se agrupa las datos por tipo de llave
+    for x in datos:
+        if x[0] not in resultado.keys():
+            resultado[x[0]]=x[1]
+        else:
+            resultado[x[0]]+=',' + x[1]
+
+    #Se selecciona el valor mayor y menor de cada diccionario
+    final=[]
+    for x in resultado.keys():
+        final.append((x,
+                max(resultado[x].split(',')),
+                min(resultado[x].split(','))))
+  
+
+    return final
 
 
 def pregunta_06():
