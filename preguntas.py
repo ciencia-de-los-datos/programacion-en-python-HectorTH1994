@@ -461,7 +461,7 @@ def pregunta_12():
     #datos=[(y, int(x[0])) for x in datos for y in x[1] ]
     #datos=sorted(datos)
     #Se cuenta cada registro
-
+    #Esto se usa tanto que es mejor una funcion
     datos=sorted(datos)
     resultado={}
     for i in datos:
