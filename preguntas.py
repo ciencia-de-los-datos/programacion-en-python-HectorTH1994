@@ -12,7 +12,8 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 from filecmp import clear_cache
-from typing import Counter
+from turtle import clear
+from typing import Counter, Final
 import itertools
 from operator import itemgetter
 
@@ -237,10 +238,6 @@ def pregunta_06():
     return final
 
 
-
-
-pregunta_06()
-
 def pregunta_07():
     """
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
@@ -262,8 +259,35 @@ def pregunta_07():
     ]
 
     """
-    return
 
+    datos=lectura_archivo()
+
+    datos=[(x[1],x[0])  for x in datos]
+
+    # Se agrupa las datos por tipo de llave
+    resultado={}
+    for x in datos:
+
+        
+        if x[0] not in resultado.keys():
+            resultado[x[0]]=x[1]
+        else:
+            resultado[x[0]]+=',' + x[1]
+
+    for x in resultado.keys():
+        resultado[x]=resultado[x].split(',')
+
+    #se quita las llaves y se deja como lista
+   
+    final=[]
+    for i in resultado.keys():
+        final.append((i,resultado[i]))
+
+    final=sorted(final)
+    print(final)
+    return
+clear
+pregunta_07()
 
 def pregunta_08():
     """
