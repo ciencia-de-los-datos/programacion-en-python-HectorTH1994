@@ -232,7 +232,6 @@ def pregunta_06():
         final.append((x,
                 max(resultado[x].split(',')),
                 min(resultado[x].split(','))))
-    
 
     return final
 
@@ -260,14 +259,11 @@ def pregunta_07():
     """
 
     datos=lectura_archivo()
-
     datos=[(x[1],x[0])  for x in datos]
 
     # Se agrupa las datos por tipo de llave
     resultado={}
     for x in datos:
-
-        
         if x[0] not in resultado.keys():
             resultado[x[0]]=x[1]
         else:
@@ -277,13 +273,11 @@ def pregunta_07():
         resultado[x]=resultado[x].split(',')
 
     #se quita las llaves y se deja como lista
-   
     final=[]
     for i in resultado.keys():
         final.append((i,resultado[i]))
 
     final=sorted(final)
-    
     return final
 pregunta_07()
 
