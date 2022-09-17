@@ -450,4 +450,26 @@ def pregunta_12():
     }
 
     """
-    return
+    datos=lectura_archivo()
+    #creamos un lista que contega la columna 0 y 5
+    #La columna 5 la ingresamos como una lista
+    #['A', ['bbb:2', 'hhh:0', 'ccc:4', 'fff:1', 'aaa:7']]
+
+    datos=[[x[0], x[4].split(',')]  for x in datos]
+    datos=[(x[0],int(y.split(':')[1])) for x in datos for y in x[1]]
+    #se crea la duplas (letra, valor)
+    #datos=[(y, int(x[0])) for x in datos for y in x[1] ]
+    #datos=sorted(datos)
+    #Se cuenta cada registro
+
+    datos=sorted(datos)
+    resultado={}
+    for i in datos:
+        if i[0] not in resultado.keys():
+            resultado[i[0]]=i[1]
+        else:
+            resultado[i[0]]+=i[1]
+
+    print(resultado)
+    return resultado
+
