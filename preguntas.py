@@ -231,10 +231,11 @@ def pregunta_06():
     final=[]
     for x in resultado.keys():
         final.append((x,
-                max(resultado[x].split(',')),
-                min(resultado[x].split(','))))
-
+                min(resultado[x].split(',')),
+                max(resultado[x].split(','))))
+ 
     return final
+
 
 
 def pregunta_07():
@@ -275,11 +276,13 @@ def pregunta_07():
     #se quita las llaves y se deja como lista
     final=[]
     for i in resultado.keys():
-        final.append((i,resultado[i]))
+        final.append((int(i),resultado[i]))
 
     final=sorted(final)
+    print(final)
     return final
 
+pregunta_07()
 
 
 def pregunta_08():
