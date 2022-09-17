@@ -418,7 +418,21 @@ def pregunta_11():
 
 
     """
-    return
+    datos=lectura_archivo()
+    datos=[[x[1], x[3].split(',')]  for x in datos]
+    #se crea la duplas (letra, valor)
+    datos=[(y, int(x[0])) for x in datos for y in x[1] ]
+    datos=sorted(datos)
+    #Se cuenta cada registro
+    resultado={}
+    for i in datos:
+        if i[0] not in resultado.keys():
+            resultado[i[0]]=i[1]
+        else:
+            resultado[i[0]]+=i[1]
+
+    return resultado
+
 
 
 def pregunta_12():
