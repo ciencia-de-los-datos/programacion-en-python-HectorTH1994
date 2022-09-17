@@ -185,7 +185,6 @@ def pregunta_05():
                 int(min(resultado[x].split(',')))))
     return final
 
-
 def pregunta_06():
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
@@ -286,7 +285,7 @@ def pregunta_07():
     final=sorted(final)
     
     return final
-
+pregunta_07()
 
 
 def pregunta_08():
