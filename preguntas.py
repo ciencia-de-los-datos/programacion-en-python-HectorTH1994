@@ -18,6 +18,7 @@ import itertools
 from operator import itemgetter
 
 clear_cache
+clear
 def lectura_archivo():
     with open("data.csv", "r") as file:
         datos_1 = file.readlines()
@@ -256,7 +257,8 @@ def pregunta_07():
         (9, ["A", "B", "E", "A", "A", "C"]),
     ]
 
-    
+    """
+
     datos=lectura_archivo()
     datos=[(x[1],x[0])  for x in datos]
 
@@ -279,7 +281,6 @@ def pregunta_07():
     final=sorted(final)
     return final
 pregunta_07()
-"""
 
 
 def pregunta_08():
