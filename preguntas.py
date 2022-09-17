@@ -184,7 +184,7 @@ def pregunta_05():
                 int(min(resultado[x].split(',')))))
     return final
 
-print(pregunta_05())
+
 def pregunta_06():
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
@@ -207,8 +207,39 @@ def pregunta_06():
     ]
 
     """
-    return
+    datos=lectura_archivo()
 
+    datos=[x[4]  for x in datos]
+    datos=[x.split(",") for x in datos]
+    datos=[x for lista in datos for x in lista]
+    datos=sorted(datos)
+    datos=[x.split(":") for x in datos]
+
+    # Se agrupa las datos por tipo de llave
+    resultado={}
+    
+    for x in datos:
+
+        
+        if x[0] not in resultado.keys():
+            resultado[x[0]]=x[1]
+        else:
+            resultado[x[0]]+=',' + x[1]
+
+    #Se selecciona el valor mayor y menor de cada diccionario
+    final=[]
+    for x in resultado.keys():
+        final.append((x,
+                max(resultado[x].split(',')),
+                min(resultado[x].split(','))))
+    
+
+    return final
+
+
+
+
+pregunta_06()
 
 def pregunta_07():
     """
