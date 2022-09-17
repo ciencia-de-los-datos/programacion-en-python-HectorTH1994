@@ -219,21 +219,27 @@ def pregunta_06():
     # Se agrupa las datos por tipo de llave
     resultado={}
     
-    for x in datos:
-
-        
+    for x in datos:        
         if x[0] not in resultado.keys():
             resultado[x[0]]=x[1]
         else:
             resultado[x[0]]+=',' + x[1]
-
+    
     #Se selecciona el valor mayor y menor de cada diccionario
+  
+    
     final=[]
     for x in resultado.keys():
+
+        #print(resultado[x].split)
+        xxx=resultado[x].split(',')
+        xxx=[int(x) for x in xxx]
         final.append((x,
-                int(min(resultado[x].split(','))),
-                int(max(resultado[x].split(',')))))
+                (min(xxx)),
+                (max(xxx))))
+
     print(final)
+    
     return final
 
 
