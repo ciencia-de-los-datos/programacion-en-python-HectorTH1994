@@ -237,13 +237,9 @@ def pregunta_06():
         final.append((x,
                 (min(xxx)),
                 (max(xxx))))
-
-    print(final)
     
     return final
 
-
-pregunta_06()
 
 def pregunta_07():
     """
@@ -313,7 +309,34 @@ def pregunta_08():
     ]
 
     """
+    datos=lectura_archivo()
+    datos=[(x[1],x[0])  for x in datos]
+
+    # Se agrupa las datos por tipo de llave
+    resultado={}
+    for x in datos:
+        if x[0] not in resultado.keys():
+            resultado[x[0]]=x[1]
+        else:
+            resultado[x[0]]+=',' + x[1]
+
+    for x in resultado.keys():
+        resultado[x]=resultado[x].split(',')
+
+    #se quita las llaves y se deja como lista
+    final=[]
+
+    for i in resultado.keys():
+        #Se llama los valores
+        #Se elimina repetidos con set
+        #Se ordena con append
+        #Se le asigna valor y se agrega a resultado
+        final.append((int(i),sorted(list(set(resultado[i])))))
+
+    final=sorted(final)
+
     return
+
 
 
 def pregunta_09():
