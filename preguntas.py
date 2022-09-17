@@ -13,16 +13,43 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 
 
+from typing import Counter
+import itertools
+from operator import itemgetter
+
+
+def lectura_archivo():
+    with open("data.csv", "r") as file:
+        datos_1 = file.readlines()
+    
+
+    #limpieza
+    datos_1 = [line.replace("\n", "") for line in datos_1]
+
+    #
+    # Conversión de los strings a listas
+    #
+    datos_1 = [line.split("\t") for line in datos_1]
+    
+
+    return datos_1
+
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
 
     Rta/
     214
-
+    
     """
-    return
+    datos=lectura_archivo()
+    suma=0
+    respuesta=[int(z[1]) for z in datos]
+    suma=sum(respuesta)
+    return suma
 
+pregunta_01()
 
 def pregunta_02():
     """
@@ -39,7 +66,18 @@ def pregunta_02():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+    parejas = [(x[0]) for x in datos]
+    parejas2=[]
+
+    conteo=Counter(parejas)
+
+    for key in sorted(conteo.keys()):
+        parejas2.append((key,conteo[key]))
+
+     
+    return parejas2
+
 
 
 def pregunta_03():
@@ -57,7 +95,21 @@ def pregunta_03():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+    parejas = [(x[0],x[1]) for x in datos]
+    suma={}
+    for x in parejas:
+        if x[0] in suma:
+            suma[x[0]]+=int(x[1])
+        else:
+            suma[x[0]]=int(x[1])
+    
+    resultado=[]
+
+    for key in sorted(suma.keys()):
+        resultado.append((key,suma[key]))
+    return resultado
+
 
 
 def pregunta_04():
@@ -82,7 +134,18 @@ def pregunta_04():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+    #Selecionamos la fila
+    #Se selecciona la columna de las fechas [1]
+    #Se convierte en lista con split
+    #Se selecciona el dato corresponde a mes
+    meses = [x[2].split('-')[1] for x in datos]
+    suma=Counter(meses)
+    parejas2=[]
+    for key in sorted(suma.keys()):
+        parejas2.append((key,suma[key]))
+    
+    return parejas2
 
 
 def pregunta_05():
@@ -100,8 +163,28 @@ def pregunta_05():
     ]
 
     """
-    return
+        #Leemos el archivo
+    datos=lectura_archivo()
 
+    datos=[(x[0],x[1])  for x in datos]
+    
+    resultado={}
+    datos=sorted(datos)
+
+    # Se agrupa las datos por tipo de llave
+    for x in datos:
+        if x[0] not in resultado.keys():
+            resultado[x[0]]=x[1]
+        else:
+            resultado[x[0]]+=',' + x[1]
+
+    #Se selecciona el valor mayor y menor de cada diccionario
+    final=[]
+    for x in resultado.keys():
+        final.append((x,
+                int(max(resultado[x].split(','))),
+                int(min(resultado[x].split(',')))))
+    return final
 
 def pregunta_06():
     """
@@ -125,7 +208,37 @@ def pregunta_06():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+
+    datos=[x[4]  for x in datos]
+    datos=[x.split(",") for x in datos]
+    datos=[x for lista in datos for x in lista]
+    datos=sorted(datos)
+    datos=[x.split(":") for x in datos]
+
+    # Se agrupa las datos por tipo de llave
+    resultado={}
+    
+    for x in datos:        
+        if x[0] not in resultado.keys():
+            resultado[x[0]]=x[1]
+        else:
+            resultado[x[0]]+=',' + x[1]
+    
+    #Se selecciona el valor mayor y menor de cada diccionario
+  
+    
+    final=[]
+    for x in resultado.keys():
+
+        #print(resultado[x].split)
+        xxx=resultado[x].split(',')
+        xxx=[int(x) for x in xxx]
+        final.append((x,
+                (min(xxx)),
+                (max(xxx))))
+    
+    return final
 
 
 def pregunta_07():
@@ -149,7 +262,29 @@ def pregunta_07():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+    datos=[(x[1],x[0])  for x in datos]
+
+    # Se agrupa las datos por tipo de llave
+    resultado={}
+    for x in datos:
+        if x[0] not in resultado.keys():
+            resultado[x[0]]=x[1]
+        else:
+            resultado[x[0]]+=',' + x[1]
+
+    for x in resultado.keys():
+        resultado[x]=resultado[x].split(',')
+
+    #se quita las llaves y se deja como lista
+    final=[]
+    for i in resultado.keys():
+        final.append((int(i),resultado[i]))
+
+    final=sorted(final)
+
+    return final
+
 
 
 def pregunta_08():
@@ -174,7 +309,34 @@ def pregunta_08():
     ]
 
     """
-    return
+    datos=lectura_archivo()
+    datos=[(x[1],x[0])  for x in datos]
+
+    # Se agrupa las datos por tipo de llave
+    resultado={}
+    for x in datos:
+        if x[0] not in resultado.keys():
+            resultado[x[0]]=x[1]
+        else:
+            resultado[x[0]]+=',' + x[1]
+
+    for x in resultado.keys():
+        resultado[x]=resultado[x].split(',')
+
+    #se quita las llaves y se deja como lista
+    final=[]
+
+    for i in resultado.keys():
+        #Se llama los valores
+        #Se elimina repetidos con set
+        #Se ordena con append
+        #Se le asigna valor y se agrega a resultado
+        final.append((int(i),sorted(list(set(resultado[i])))))
+
+    final=sorted(final)
+
+    return final
+
 
 
 def pregunta_09():
@@ -197,8 +359,21 @@ def pregunta_09():
     }
 
     """
-    return
+    datos=lectura_archivo()
+    datos=[x[4]  for x in datos]
+    datos=[x.split(",") for x in datos]
+    datos=[x for lista in datos for x in lista]
+    datos=sorted(datos)
+    datos=[x.split(":")[0] for x in datos]
+    suma=Counter(datos)
+    #Se creo un diccionario de conteo
+    #Se transforma ese diccionario a la forma solicitada
+    parejas2={}
+    for key in sorted(suma.keys()):
+        parejas2[key]=suma[key]
+    return parejas2
 
+pregunta_09()
 
 def pregunta_10():
     """
@@ -218,7 +393,11 @@ def pregunta_10():
 
 
     """
-    return
+    datos=lectura_archivo()
+    datos=[(x[0], len(x[3].split(',')), int(len(x[4].split(':')))-1)  for x in datos]
+    print(datos)
+    return datos
+
 
 
 def pregunta_11():
@@ -239,7 +418,21 @@ def pregunta_11():
 
 
     """
-    return
+    datos=lectura_archivo()
+    datos=[[x[1], x[3].split(',')]  for x in datos]
+    #se crea la duplas (letra, valor)
+    datos=[(y, int(x[0])) for x in datos for y in x[1] ]
+    datos=sorted(datos)
+    #Se cuenta cada registro
+    resultado={}
+    for i in datos:
+        if i[0] not in resultado.keys():
+            resultado[i[0]]=i[1]
+        else:
+            resultado[i[0]]+=i[1]
+
+    return resultado
+
 
 
 def pregunta_12():
@@ -257,4 +450,26 @@ def pregunta_12():
     }
 
     """
-    return
+    datos=lectura_archivo()
+    #creamos un lista que contega la columna 0 y 5
+    #La columna 5 la ingresamos como una lista
+    #['A', ['bbb:2', 'hhh:0', 'ccc:4', 'fff:1', 'aaa:7']]
+
+    datos=[[x[0], x[4].split(',')]  for x in datos]
+    datos=[(x[0],int(y.split(':')[1])) for x in datos for y in x[1]]
+    #se crea la duplas (letra, valor)
+    #datos=[(y, int(x[0])) for x in datos for y in x[1] ]
+    #datos=sorted(datos)
+    #Se cuenta cada registro
+    #Esto se usa tanto que es mejor una funcion
+    datos=sorted(datos)
+    resultado={}
+    for i in datos:
+        if i[0] not in resultado.keys():
+            resultado[i[0]]=i[1]
+        else:
+            resultado[i[0]]+=i[1]
+
+    print(resultado)
+    return resultado
+
