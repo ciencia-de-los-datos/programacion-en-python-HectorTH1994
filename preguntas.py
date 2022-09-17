@@ -12,11 +12,11 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
-from typing import Counter, Final
+
+from typing import Counter
 import itertools
 from operator import itemgetter
-from turtle import clear
-import tkinter as TK
+
 
 def lectura_archivo():
     with open("data.csv", "r") as file:
@@ -77,7 +77,8 @@ def pregunta_02():
 
      
     return parejas2
-pregunta_02()
+
+
 
 def pregunta_03():
     """
