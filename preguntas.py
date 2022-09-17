@@ -231,12 +231,13 @@ def pregunta_06():
     final=[]
     for x in resultado.keys():
         final.append((x,
-                min(resultado[x].split(',')),
-                max(resultado[x].split(','))))
- 
+                int(min(resultado[x].split(','))),
+                int(max(resultado[x].split(',')))))
+    print(final)
     return final
 
 
+pregunta_06()
 
 def pregunta_07():
     """
@@ -279,10 +280,9 @@ def pregunta_07():
         final.append((int(i),resultado[i]))
 
     final=sorted(final)
-    print(final)
+
     return final
 
-pregunta_07()
 
 
 def pregunta_08():
