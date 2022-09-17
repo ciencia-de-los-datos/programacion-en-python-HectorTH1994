@@ -12,12 +12,12 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 from filecmp import clear_cache
-from typing import Counter
+from turtle import clear
+from typing import Counter, Final
 import itertools
 from operator import itemgetter
 
-clear_cache
-clear
+
 def lectura_archivo():
     with open("data.csv", "r") as file:
         datos_1 = file.readlines()
@@ -236,10 +236,6 @@ def pregunta_06():
     return final
 
 
-
-
-pregunta_06()
-
 def pregunta_07():
     """
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
@@ -261,8 +257,6 @@ def pregunta_07():
     ]
 
     """
-<<<<<<< HEAD
-
     datos=lectura_archivo()
     datos=[(x[1],x[0])  for x in datos]
 
@@ -284,18 +278,8 @@ def pregunta_07():
 
     final=sorted(final)
     return final
-    
-pregunta_01()
-pregunta_02()
-pregunta_03()
-pregunta_04()
-pregunta_05()
-pregunta_06()
-pregunta_07()
-=======
-    return
 
->>>>>>> parent of b5fc65f (Update preguntas.py)
+
 
 def pregunta_08():
     """
