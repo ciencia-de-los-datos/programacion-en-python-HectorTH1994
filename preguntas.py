@@ -284,10 +284,10 @@ def pregunta_07():
         final.append((i,resultado[i]))
 
     final=sorted(final)
-    print(final)
+    
     return
-clear
-pregunta_07()
+
+
 
 def pregunta_08():
     """
